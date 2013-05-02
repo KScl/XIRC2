@@ -1,0 +1,3 @@
+Place XIRC_Modules in here, each in its own subdirectory.
+
+The subdirectory name, file name, and class name should all match.
