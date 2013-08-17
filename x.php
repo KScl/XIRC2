@@ -18,6 +18,12 @@ define('COMMON_LIBS', INCLUDE_DIR.'libs'.DIRECTORY_SEPARATOR);
 /*
  * Startup sequence.
  */
+if (!function_exists('socket_create')) {
+	echo "XIRC2 IRC Bot requires sockets to be enabled.\r\n";
+	echo "Please enable 'php_sockets.dll' in php.ini.\r\n\r\n";
+	die();
+}
+
 require_once(INCLUDE_DIR.'base.php');
 require_once(INCLUDE_DIR.'config.php');
 require_once(INCLUDE_DIR.'common.php');
