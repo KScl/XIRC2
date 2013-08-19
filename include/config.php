@@ -25,7 +25,7 @@ abstract class config {
 	}
 
 	public static function read($section, $option, $default = NULL) {
-		if (!self::$cdata[$section][$option]) {
+		if (!isset(self::$cdata[$section][$option])) {
 			if ($default !== NULL)
 				return $default;
 			die(consoleError("Required configuration option [{$section}/{$option}] was not found. Exiting."));

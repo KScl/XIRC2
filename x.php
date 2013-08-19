@@ -10,7 +10,7 @@
 
 error_reporting(E_ALL & ~(E_NOTICE|E_STRICT));
 
-define('XIRC_VERSION', "2.1.2");
+define('XIRC_VERSION', "2.1.3");
 define('INCLUDE_DIR', 'include'.DIRECTORY_SEPARATOR);
 define('BOT_DIR',     'bots'.DIRECTORY_SEPARATOR);
 define('COMMON_LIBS', INCLUDE_DIR.'libs'.DIRECTORY_SEPARATOR);
@@ -81,5 +81,5 @@ while(true) { //main loop
 
 	irc::receive();
 	foreach (events::$bots as &$bot)
-		$bot->onMainLoop($irc);
+		$bot->onMainLoop();
 }

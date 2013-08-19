@@ -39,8 +39,10 @@ class events {
 
 	public static function initialize() {
 		// Setup defines
-		foreach (self::$hooks as $k => $t)
+		foreach (self::$hooks as $k => $t) {
 			define($t, $k);
+			self::$handlers[$k] = array();
+		}
 	}
 
 	public static function hook($botName, $type, $callback) {

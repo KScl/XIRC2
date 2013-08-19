@@ -66,4 +66,3 @@ class Timer
 		return false;
 	}
 }
-?>

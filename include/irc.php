@@ -203,7 +203,7 @@ class irc {
 
 		$tmp = explode('!', $in);
 		$nick = $tmp[0];
-		if (!$tmp[1]) return;
+		if (!isset($tmp[1])) return;
 
 		$tmp = explode('@', $tmp[1], 2);
 		$user = $tmp[0];
