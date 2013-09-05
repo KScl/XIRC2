@@ -160,12 +160,10 @@ class irc {
 				if (count($arr) > 0)
 					$rex[] = implode(' ', $arr);
 
-				// Numeric code
-				if (preg_match('/[0-9]{3}/', $rex[1]))
-					self::receivedNumeric($rex);
-				else if ($rex[0] == "PING") {
+				// Server ping request
+				if ($rex[0] == "PING") {
 					if (self::$status != STAT_CONNECTED)
-					consoleDebug('Pre-connect ping: '.(string)$rex[1]);
+						consoleDebug('Pre-connect ping: '.(string)$rex[1]);
 
 					// Don't delay ping replies
 					// Just send the damn things and get it over with
@@ -173,11 +171,16 @@ class irc {
 					if ($r === false)
 						self::dropped();
 				}
-				else if ($rex[0] == "ERROR") {
+				// Connection drop message
+				elseif ($rex[0] == "ERROR") {
 					consoleError($rex[1]);
 					self::dropped();
 				}
-				else if (in_array('received'.$rex[1], get_class_methods('irc'))) {
+				// Numeric code (information from server)
+				elseif (preg_match('/^[0-9]{3}$/', $rex[1]))
+					self::receivedNumeric($rex);				
+				// Information from other clients
+				elseif (in_array('received'.$rex[1], get_class_methods('irc'))) {
 					textlog('<-',$receive);
 
 					$function = 'received'.$rex[1];
