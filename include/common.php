@@ -147,6 +147,7 @@ function separateList($array, $limit = 3) {
 function r() { return "\x0F"; }
 function u() { return "\x1F"; }
 function b() { return "\x02"; }
+function i() { return "\x1D"; }
 function c($n = -1, $nn = -1) {
 	$k = "";
 	if ($n != -1)  $k = str_pad($n, 2, 0, STR_PAD_LEFT);
