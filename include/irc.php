@@ -508,9 +508,7 @@ class irc {
 	// Handles receiving and reconnecting and anything else
 	public static function receive() {
 		// We haven't identified, but are in progress
-		// Wait for ANY message just to be sure we're connected to an IRC server?
-		// (ed: probably not necessary)
-		if (self::$status == STAT_NEEDSEND && self::$_lastRecv != 0) {
+		if (self::$status == STAT_NEEDSEND) {
 			self::$sendBuf[] = 'NICK '.self::$nickname;
 			self::$sendBuf[] = 'USER ' . self::$login . ' "" "' . self::$server .  '" :'. self::$realname;
 
